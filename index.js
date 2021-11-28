@@ -33,7 +33,18 @@ const mpMap = {
 }
 
 const imgMap = {
-
+    //Magic Eden
+    "MEisE1HzehtrDpAAT8PnLHjpSSkRYakotTuJRPjTpo8": "https://cdn.discordapp.com/attachments/880171811118153728/914575095941451836/magic_eden.png",
+    //Alpha Art
+    "HZaWndaNWHFDd9Dhk5pqUUtsmoBCqzb1MLu3NAh1VX6B": "https://cdn.discordapp.com/attachments/880171811118153728/914575095257784390/alpha_art.png",
+    //Solanart
+    "CJsLwbP1iu5DuUikHEJnLfANgKy6stB2uFgvBBHoyxwz": "https://cdn.discordapp.com/attachments/880171811118153728/914575096184729600/solonart.png",
+    //Digital Eyes
+    "A7p8451ktDCHq5yYaHczeLMYsjRsAkzc3hCXcSrwYHU7": "https://cdn.discordapp.com/attachments/880171811118153728/914575095454904410/digital_eyes.png",
+    //Exchange Art
+    "AmK5g2XcyptVLCFESBCJqoSfwV3znGoVYQnqEnaAZKWn": "https://cdn.discordapp.com/attachments/880171811118153728/914575095735926834/exchange_art.png",
+    //SolSurfer
+    //"": "",
 }
 //Main function
 const runSalesBot = async () => {
@@ -68,6 +79,7 @@ const runSalesBot = async () => {
                 if (transc.meta && transc.meta.err != null) {continue;}
 
                 const dateString = new Date(transc.blockTime * 1000).toLocaleString();
+                //calculate the price
                 const price = Math.abs((transc.meta.preBalances[0] - transc.meta.postBalances[0])) / solanaWeb3.LAMPORTS_PER_SOL;
                 //retrieve all accounts used in the transaction
                 const accounts = transc.transaction.message.accountKeys;
@@ -76,13 +88,13 @@ const runSalesBot = async () => {
 
 
                 //Retrieve NFT sale metadata from marketplace
-                if (mpMap[marketplaceAccount]){ //treu - if the account address matches the address in the mpMap object, false- if not
+                if (mpMap[marketplaceAccount]){ //true - if the account address matches the address in the mpMap object, false- if not
                     const metadata = await getMetadata(transc.meta.postTokenBalances[0].mint);
                     if (!metadata) {console.log("Couldn't get metadata"); continue;}
                     
                     
                     printSalesInfo(dateString, price, signature, metadata.name, mpMap[marketplaceAccount], metadata.image);
-                    await postSaleToDiscord(metadata.name, price, dateString, signature, metadata.image, mpMap[marketplaceAccount]);
+                    await postSaleToDiscord(metadata.name, price, dateString, signature, metadata.image, mpMap[marketplaceAccount], imgMap[marketplaceAccount]);
                 } else{ 
                     console.log('not a supported a marketplace sale');
                 }
@@ -133,7 +145,7 @@ const getMetadata = async (tokenPubKey) => {
     }
 }
 
-const postSaleToDiscord = (title, price, date, signature, imageURL, marketplace) => {
+const postSaleToDiscord = (title, price, date, signature, imageURL, marketplace, mpImg) => {
     axios.post(process.env.DISCORD_URL,
         {
             "username": "Ted Scraper",
@@ -169,7 +181,8 @@ const postSaleToDiscord = (title, price, date, signature, imageURL, marketplace)
                         "url": `${imageURL}`,
                     },
                     "footer": {
-                        "text": `${marketplace}`
+                        "text": `${marketplace}`,
+                        "icon_url": `${mpImg}`
                     }
                 }
             ]

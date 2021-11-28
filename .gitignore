@@ -1,4 +1,4 @@
 /node_modules
-
+/package-lock.json
 # misc mac files
 .DS_Store
