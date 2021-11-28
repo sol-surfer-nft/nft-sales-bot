@@ -26,7 +26,7 @@ const mpMap = {
     "MEisE1HzehtrDpAAT8PnLHjpSSkRYakotTuJRPjTpo8": "Magic Eden",
     "HZaWndaNWHFDd9Dhk5pqUUtsmoBCqzb1MLu3NAh1VX6B": "Alpha Art",
     "CJsLwbP1iu5DuUikHEJnLfANgKy6stB2uFgvBBHoyxwz": "Solanart",
-    "617jbWo616ggkDxvW1Le8pV38XLbVSyWY8ae6QUmGBAU": "Solsea",
+    /*"617jbWo616ggkDxvW1Le8pV38XLbVSyWY8ae6QUmGBAU": "Solsea",*/
     "A7p8451ktDCHq5yYaHczeLMYsjRsAkzc3hCXcSrwYHU7": "Digital Eyes",
     "AmK5g2XcyptVLCFESBCJqoSfwV3znGoVYQnqEnaAZKWn": "Exchange Art",
     //"": "SolSurfer"
@@ -160,10 +160,10 @@ const postSaleToDiscord = (title, price, date, signature, imageURL, marketplace)
                             "name": "Date",
                             "value": `${date}`,
                         },
-                        {
+                        /*{
                             "name": "Explorer",
                             "value": `https://explorer.solana.com/tx/${signature}`
-                        }
+                        }*/
                     ],
                     "image": {
                         "url": `${imageURL}`,
