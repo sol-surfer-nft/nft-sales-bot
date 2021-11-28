@@ -8,7 +8,7 @@ const axios = require('axios') //Handling HTTP requests
 // Validating project address and Discord URL  - experiencing bad request, receiving status 400 when using the MetaTeds Webhooks URL 
 if(!process.env.PROJECT_ADDRESS || !process.env.DISCORD_URL) {
     console.log("Please set your environment variables")
-    //return
+    return
     
 }
 
@@ -142,7 +142,7 @@ const postSaleToDiscord = (title, price, date, signature, imageURL, marketplace)
                 {
                     "author": {
                         "name": "Ted Market Bot",
-                        "icon_url": "https://pbs.twimg.com/media/FECKzDfXIAY6xn7?format=png&name=900x900"
+                        "icon_url": "https://pbs.twimg.com/profile_images/1456333571501838341/OyOE6SjJ_400x400.jpg"
                     },
                     "fields": [
                         {
