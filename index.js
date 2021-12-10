@@ -7,9 +7,7 @@ const axios = require('axios') //Handling HTTP requests
 
 // Validating project address and Discord URL  - experiencing bad request, receiving status 400 when using the MetaTeds Webhooks URL 
 if(!process.env.PROJECT_ADDRESS || !process.env.DISCORD_URL) {
-    console.log("Please set your environment variables")
-    return
-    
+    console.log("Please set your environment variables");
 }
 
 // Connection to Metaplex and Solana mainnet
@@ -19,7 +17,7 @@ const url = solanaWeb3.clusterApiUrl('mainnet-beta');
 const solana_connection = new solanaWeb3.Connection(url, 'confirmed');
 const metaplex_connection = new Connection('mainnet-beta');
 const { metadata: {Metadata} } = programs;
-const pollingInterval = 3000; // 3 seconds
+const pollingInterval = 5000; // 3 seconds
 
 // Marketplace metadata (Program Address)
 const mpMap = {
