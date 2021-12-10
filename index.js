@@ -18,7 +18,7 @@ const url = solanaWeb3.clusterApiUrl('mainnet-beta');
 const solana_connection = new solanaWeb3.Connection(url, 'confirmed');
 const metaplex_connection = new Connection('mainnet-beta');
 const { metadata: {Metadata} } = programs;
-const pollingInterval = 5000; // 3 seconds
+const pollingInterval = 5000; // 5 seconds
 
 // Marketplace metadata (Program Address)
 const mpMap = {
