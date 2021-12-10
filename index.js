@@ -146,7 +146,7 @@ const getMetadata = async (tokenPubKey) => {
 const postSaleToDiscord = (title, price, date, signature, imageURL, marketplace, mpImg) => {
     axios.post(process.env.DISCORD_URL,
         {
-            "username": "Ted Scraper",
+            "username": "Ted Market Scraper",
             //"avatar_url":""
             "embeds": [
                 {
