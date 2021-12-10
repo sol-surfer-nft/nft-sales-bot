@@ -1,5 +1,6 @@
 //Import libraries
 const solanaWeb3 = require('@solana/web3.js'); //Interact with the nodes on the solana chain
+const server_alive = require('./server_alive');
 const { Connection, programs} = require('@metaplex/js'); //Tools. contract, standards to interact with Solana NFTS
 const axios = require('axios') //Handling HTTP requests
 
